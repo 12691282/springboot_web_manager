@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.delta.mybaits.mapper.SysUserMapper" >
+	<select id="findHouseInfoListByBean" resultType="com.delta.mybaits.model.sysUser.SysUserModel" parameterType="com.delta.bean.sysUser.SysUserBean">
+		SELECT 
+			 user_id as userId,
+			 username as username,
+			 password as password,
+			 alias_name as aliasName,
+			 create_time as createTime,
+			 status_flag as statusFlag
+		FROM sys_user
+		<where>
+			 <if test="userId != null ">
+				 <bind name="userId_pattern" value="'%' + userId + '%'" />
+				  AND user_id LIKE  #{userId_pattern}
+			 </if>
+			 <if test="username != null ">
+				 <bind name="username_pattern" value="'%' + username + '%'" />
+				  AND username LIKE  #{username_pattern}
+			 </if>
+			 <if test="password != null ">
+				 <bind name="password_pattern" value="'%' + password + '%'" />
+				  AND password LIKE  #{password_pattern}
+			 </if>
+			 <if test="aliasName != null ">
+				 <bind name="aliasName_pattern" value="'%' + aliasName + '%'" />
+				  AND alias_name LIKE  #{aliasName_pattern}
+			 </if>
+			 <if test="createTime != null ">
+				 <bind name="createTime_pattern" value="'%' + createTime + '%'" />
+				  AND create_time LIKE  #{createTime_pattern}
+			 </if>
+			 <if test="statusFlag != null ">
+				 <bind name="statusFlag_pattern" value="'%' + statusFlag + '%'" />
+				  AND status_flag LIKE  #{statusFlag_pattern}
+			 </if>
+
+		</where>
+
+	</select>
+
+
+</mapper>
