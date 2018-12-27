@@ -47,6 +47,10 @@ public class ControllerLogAspect {
         
     }
 
+
+	/**
+	 * 处理分页数据
+	 */
     private void setPageInfo(HttpServletRequest request) {
     	
     	int pageNum = 1;
